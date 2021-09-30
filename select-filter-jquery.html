@@ -1,0 +1,36 @@
+Select list 1:
+
+<select id="field_81" class="form-control" name="field_81" required>
+    <option value="">Please select your country</option>
+    <option value="Afghanistan">Afghanistan</option>
+    <option value="Albania">Albania</option>
+    <option value="Algeria">Algeria</option>
+    <option value="American Samoa">American Samoa</option>
+</select>
+
+Select list 2:
+
+<select id="field_414" name="field_414" required>
+    <option value="">Please select your timezone</option>
+    <option value="Africa/Abidjan" data-country="Cote d'Ivoire">Africa/Abidjan</option>
+    <option value="Africa/Accra" data-country="Ghana">Africa/Accra</option>
+    <option value="Africa/Addis_Ababa" data-country="Ethiopia">Africa/Addis_Ababa</option>
+    <option value="Africa/Algiers" data-country="Algeria">Africa/Algiers</option>
+    <option value="Africa/Asmara" data-country="Eritrea">Africa/Asmara</option>
+    <option value="Africa/Bamako" data-country="Mali">Africa/Bamako</option>
+    <option value="Africa/Bangui" data-country="Central African Republic">Africa/Bangui</option>
+</select>
+
+Here is my jQuery:
+
+<script>
+    jQuery("#field_81").change(function() {
+        if (jQuery(this).data('options') == undefined) {
+            /*Taking an array of all options-2 and kind of embedding it on the select1*/
+            jQuery(this).data('options', jQuery('#field_414 option').clone());
+        }
+        var id = jQuery(this).val();
+        var options = jQuery(this).data('options').filter('[data-country="' + id + '"]');
+        jQuery('#field_414').html(options);
+    });
+</script>
