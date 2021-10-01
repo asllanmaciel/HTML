@@ -24,13 +24,18 @@ Select list 2:
 Here is my jQuery:
 
 <script>
+    var full = $('#field_414 option');
     jQuery("#field_81").change(function() {
         if (jQuery(this).data('options') == undefined) {
             /*Taking an array of all options-2 and kind of embedding it on the select1*/
             jQuery(this).data('options', jQuery('#field_414 option').clone());
         }
         var id = jQuery(this).val();
-        var options = jQuery(this).data('options').filter('[data-country="' + id + '"]');
-        jQuery('#field_414').html(options);
+        if(id === ''){
+            $('#field_414').html(full);
+        }else{
+            var options = jQuery(this).data('options').filter('[data-country="' + id + '"]');
+            jQuery('#field_414').html(options);
+        }
     });
 </script>
