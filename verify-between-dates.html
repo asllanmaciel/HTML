@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html>
+  
+<head>
+    <title>
+        How to Check if one Date is between
+        two dates using JavaScript ?
+    </title>
+      
+    <style>
+        body {
+            text-align: center;
+        }
+        h1 {
+            color: green;
+        }
+        #geeks {
+            font-weight: bold;
+        }
+    </style>
+</head>
+  
+<body>
+    <h1>GeeksforGeeks</h1>
+      
+    <p>
+        Date 1 = "06/04/2019"
+        Date 2 = "07/10/2019"
+        <br>Date_to_check = "02/12/2019"
+    </p>
+      
+    <button onclick="gfg_Run()">
+        Click Here
+    </button>
+      
+    <p id="geeks"></p>
+      
+    <script>
+        var el_down = document.getElementById("geeks");
+      
+        // Format - MM/DD/YYYY
+        var Date_1 = "06/04/2019";
+        var Date_2 = "07/10/2019";
+        var Date_to_check = "02/12/2019";
+  
+        function gfg_Run() {
+            D_1 = Date_1.split("/");
+            D_2 = Date_2.split("/");
+            D_3 = Date_to_check.split("/");
+              
+            var d1 = new Date(D_1[2], parseInt(D_1[1]) - 1, D_1[0]);
+            var d2 = new Date(D_2[2], parseInt(D_2[1]) - 1, D_2[0]);
+            var d3 = new Date(D_3[2], parseInt(D_3[1]) - 1, D_3[0]);
+              
+            if (d3 > d1 && d3 < d2) {
+                el_down.innerHTML = "Date is in between the "
+                                    + "Date 1 and Date 2";
+            } else {
+                el_down.innerHTML = "Date is not in between "
+                                    + "the Date 1 and Date 2";
+            }
+        }
+    </script>
+</body>
+  
+</html>
